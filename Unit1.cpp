@@ -17,7 +17,7 @@ char a1, a2, a3, a4, a5, a6, a7, a8, a9;
 char whoPlays;
 char winner;
 
-void findWinner(){
+bool findWinner(){
     bool horizontal1 = (a1==a2 && a2==a3 && a1!='n');
     bool horizontal2 = (a4==a5 && a5==a6 && a4!='n');
     bool horizontal3 = (a7==a8 && a8==a9 && a7!='n');
@@ -42,17 +42,9 @@ void findWinner(){
             winner = 'x';
         }
         Application->MessageBox(win, "End of the game", MB_OK);
-
-        ImageArea1->Enabled = false;
-        ImageArea2->Enabled = false;
-        ImageArea3->Enabled = false;
-        ImageArea4->Enabled = false;
-        ImageArea5->Enabled = false;
-        ImageArea6->Enabled = false;
-        ImageArea7->Enabled = false;
-        ImageArea8->Enabled = false;
-        ImageArea9->Enabled = false;
+        return true;
     }
+    return false;
 }
 
 
@@ -62,45 +54,6 @@ __fastcall TForm1::TForm1(TComponent* Owner)
 {
 }
 //---------------------------------------------------------------------------
-
-
-void TForm1::findWinner2(TObject *Sender){
-    bool horizontal1 = (a1==a2 && a2==a3 && a1!='n');
-    bool horizontal2 = (a4==a5 && a5==a6 && a4!='n');
-    bool horizontal3 = (a7==a8 && a8==a9 && a7!='n');
-
-    bool vertical1 = (a1==a4 && a4==a7 && a1!='n');
-    bool vertical2 = (a2==a5 && a5==a8 && a2!='n');
-    bool vertical3 = (a3==a6 && a6==a9 && a3!='n');
-
-    bool diagonal1 = (a1==a5 && a5==a9 && a1!='n');
-    bool diagonal2 = (a3==a5 && a5==a7 && a3!='n');
-
-    if (horizontal1 || horizontal2 || horizontal3 ||
-        vertical1   || vertical2   || vertical3   ||
-        diagonal1   || diagonal2) {
-
-        char *win;
-        if (whoPlays=='x'){
-            win = "Circle wins!";
-            winner = 'o';
-        } else {
-            win = "Cross wins!";
-            winner = 'x';
-        }
-        Application->MessageBox(win, "End of the game", MB_OK);
-
-        ImageArea1->Enabled = false;
-        ImageArea2->Enabled = false;
-        ImageArea3->Enabled = false;
-        ImageArea4->Enabled = false;
-        ImageArea5->Enabled = false;
-        ImageArea6->Enabled = false;
-        ImageArea7->Enabled = false;
-        ImageArea8->Enabled = false;
-        ImageArea9->Enabled = false;
-    }
-}
 
 void __fastcall TForm1::FormCreate(TObject *Sender)
 {
@@ -148,7 +101,18 @@ void __fastcall TForm1::ImageArea1Click(TObject *Sender)
             whoPlays = 'o';
         }
         ImageArea1->Enabled=false;
-        findWinner();
+        bool isWinnerFound = findWinner();
+        if (isWinnerFound) {
+            ImageTurn->Picture->LoadFromFile("images/nothing.bmp");
+            ImageArea2->Enabled = false;
+            ImageArea3->Enabled = false;
+            ImageArea4->Enabled = false;
+            ImageArea5->Enabled = false;
+            ImageArea6->Enabled = false;
+            ImageArea7->Enabled = false;
+            ImageArea8->Enabled = false;
+            ImageArea9->Enabled = false;
+        }
     }
 }
 //---------------------------------------------------------------------------
@@ -167,7 +131,18 @@ void __fastcall TForm1::ImageArea2Click(TObject *Sender)
             whoPlays = 'o';
         }
         ImageArea2->Enabled=false;
-        findWinner();
+        bool isWinnerFound = findWinner();
+        if (isWinnerFound) {
+            ImageTurn->Picture->LoadFromFile("images/nothing.bmp");
+            ImageArea1->Enabled = false;
+            ImageArea3->Enabled = false;
+            ImageArea4->Enabled = false;
+            ImageArea5->Enabled = false;
+            ImageArea6->Enabled = false;
+            ImageArea7->Enabled = false;
+            ImageArea8->Enabled = false;
+            ImageArea9->Enabled = false;
+        }
     }
 }
 //---------------------------------------------------------------------------
@@ -186,7 +161,18 @@ void __fastcall TForm1::ImageArea3Click(TObject *Sender)
             whoPlays = 'o';
         }
         ImageArea3->Enabled=false;
-        findWinner();
+        bool isWinnerFound = findWinner();
+        if (isWinnerFound) {
+            ImageTurn->Picture->LoadFromFile("images/nothing.bmp");
+            ImageArea1->Enabled = false;
+            ImageArea2->Enabled = false;
+            ImageArea4->Enabled = false;
+            ImageArea5->Enabled = false;
+            ImageArea6->Enabled = false;
+            ImageArea7->Enabled = false;
+            ImageArea8->Enabled = false;
+            ImageArea9->Enabled = false;
+        }
     }
 }
 //---------------------------------------------------------------------------
@@ -205,7 +191,18 @@ void __fastcall TForm1::ImageArea4Click(TObject *Sender)
             whoPlays = 'o';
         }
         ImageArea4->Enabled=false;
-        findWinner();
+        bool isWinnerFound = findWinner();
+        if (isWinnerFound) {
+            ImageTurn->Picture->LoadFromFile("images/nothing.bmp");
+            ImageArea1->Enabled = false;
+            ImageArea2->Enabled = false;
+            ImageArea3->Enabled = false;
+            ImageArea5->Enabled = false;
+            ImageArea6->Enabled = false;
+            ImageArea7->Enabled = false;
+            ImageArea8->Enabled = false;
+            ImageArea9->Enabled = false;
+        }
     }
 }
 //---------------------------------------------------------------------------
@@ -224,7 +221,18 @@ void __fastcall TForm1::ImageArea5Click(TObject *Sender)
             whoPlays = 'o';
         }
         ImageArea5->Enabled=false;
-        findWinner();
+        bool isWinnerFound = findWinner();
+        if (isWinnerFound) {
+            ImageTurn->Picture->LoadFromFile("images/nothing.bmp");
+            ImageArea1->Enabled = false;
+            ImageArea2->Enabled = false;
+            ImageArea3->Enabled = false;
+            ImageArea4->Enabled = false;
+            ImageArea6->Enabled = false;
+            ImageArea7->Enabled = false;
+            ImageArea8->Enabled = false;
+            ImageArea9->Enabled = false;
+        }
     }
 }
 //---------------------------------------------------------------------------
@@ -243,7 +251,18 @@ void __fastcall TForm1::ImageArea6Click(TObject *Sender)
             whoPlays = 'o';
         }
         ImageArea6->Enabled=false;
-        findWinner();
+        bool isWinnerFound = findWinner();
+        if (isWinnerFound) {
+            ImageTurn->Picture->LoadFromFile("images/nothing.bmp");
+            ImageArea1->Enabled = false;
+            ImageArea2->Enabled = false;
+            ImageArea3->Enabled = false;
+            ImageArea4->Enabled = false;
+            ImageArea5->Enabled = false;
+            ImageArea7->Enabled = false;
+            ImageArea8->Enabled = false;
+            ImageArea9->Enabled = false;
+        }
     }
 }
 //---------------------------------------------------------------------------
@@ -262,7 +281,18 @@ void __fastcall TForm1::ImageArea7Click(TObject *Sender)
             whoPlays = 'o';
         }
         ImageArea7->Enabled=false;
-        findWinner();
+        bool isWinnerFound = findWinner();
+        if (isWinnerFound) {
+            ImageTurn->Picture->LoadFromFile("images/nothing.bmp");
+            ImageArea1->Enabled = false;
+            ImageArea2->Enabled = false;
+            ImageArea3->Enabled = false;
+            ImageArea4->Enabled = false;
+            ImageArea5->Enabled = false;
+            ImageArea6->Enabled = false;
+            ImageArea8->Enabled = false;
+            ImageArea9->Enabled = false;
+        }
     }
 }
 //---------------------------------------------------------------------------
@@ -281,7 +311,18 @@ void __fastcall TForm1::ImageArea8Click(TObject *Sender)
             whoPlays = 'o';
         }
         ImageArea8->Enabled=false;
-        findWinner();
+        bool isWinnerFound = findWinner();
+        if (isWinnerFound) {
+            ImageTurn->Picture->LoadFromFile("images/nothing.bmp");
+            ImageArea1->Enabled = false;
+            ImageArea2->Enabled = false;
+            ImageArea3->Enabled = false;
+            ImageArea4->Enabled = false;
+            ImageArea5->Enabled = false;
+            ImageArea6->Enabled = false;
+            ImageArea7->Enabled = false;
+            ImageArea9->Enabled = false;
+        }
     }
 }
 //---------------------------------------------------------------------------
@@ -300,7 +341,18 @@ void __fastcall TForm1::ImageArea9Click(TObject *Sender)
             whoPlays = 'o';
         }
         ImageArea9->Enabled=false;
-        findWinner();
+        bool isWinnerFound = findWinner();
+        if (isWinnerFound) {
+            ImageTurn->Picture->LoadFromFile("images/nothing.bmp");
+            ImageArea1->Enabled = false;
+            ImageArea2->Enabled = false;
+            ImageArea3->Enabled = false;
+            ImageArea4->Enabled = false;
+            ImageArea5->Enabled = false;
+            ImageArea6->Enabled = false;
+            ImageArea7->Enabled = false;
+            ImageArea8->Enabled = false;
+        }
     }
 }
 //---------------------------------------------------------------------------
