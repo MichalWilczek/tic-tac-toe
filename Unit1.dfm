@@ -1,6 +1,6 @@
 object Form1: TForm1
-  Left = 228
-  Top = 119
+  Left = -1194
+  Top = 127
   Width = 672
   Height = 393
   Caption = 'Tic Tac Toe'
@@ -119,5 +119,6 @@ object Form1: TForm1
     Font.Style = []
     ParentFont = False
     TabOrder = 0
+    OnClick = FormCreate
   end
 end

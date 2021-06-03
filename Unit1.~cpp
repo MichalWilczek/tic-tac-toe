@@ -14,10 +14,35 @@ TForm1 *Form1;
 // a1 = 'o' (circle)
 // a1 = 'x' (cross)
 char a1, a2, a3, a4, a5, a6, a7, a8, a9;
-char who;
+char whoPlays;
+char winner;
 
-void checkIfGameIsFinished(){
- ;
+void findWinner(){
+    bool horizontal1 = (a1==a2 && a2==a3 && a1!='n');
+    bool horizontal2 = (a4==a5 && a5==a6 && a4!='n');
+    bool horizontal3 = (a7==a8 && a8==a9 && a7!='n');
+
+    bool vertical1 = (a1==a4 && a4==a7 && a1!='n');
+    bool vertical2 = (a2==a5 && a5==a8 && a2!='n');
+    bool vertical3 = (a3==a6 && a6==a9 && a3!='n');
+
+    bool diagonal1 = (a1==a5 && a5==a9 && a1!='n');
+    bool diagonal2 = (a3==a5 && a5==a7 && a3!='n');
+
+    if (horizontal1 || horizontal2 || horizontal3 ||
+        vertical1   || vertical2   || vertical3   ||
+        diagonal1   || diagonal2) {
+
+        char *win;
+        if (whoPlays=='x'){
+            win = "Circle wins!";
+            winner = 'o';
+        } else {
+            win = "Cross wins!";
+            winner = 'x';
+        }
+        Application->MessageBox(win, "End of the game", MB_OK);
+    }
 }
 
 
@@ -46,177 +71,188 @@ void __fastcall TForm1::FormCreate(TObject *Sender)
     a4='n'; a5='n'; a6='n';
     a7='n'; a8='n'; a9='n';
 
-    who='o';
+    whoPlays='o';
+    winner='n';
+
+    ImageArea1->Enabled = true;
+    ImageArea2->Enabled = true;
+    ImageArea3->Enabled = true;
+    ImageArea4->Enabled = true;
+    ImageArea5->Enabled = true;
+    ImageArea6->Enabled = true;
+    ImageArea7->Enabled = true;
+    ImageArea8->Enabled = true;
+    ImageArea9->Enabled = true;
 }
 //---------------------------------------------------------------------------
 void __fastcall TForm1::ImageArea1Click(TObject *Sender)
 {
-    if (a1 == 'n') {
-        if (who == 'o') {
+    if (a1 == 'n' & winner == 'n') {
+        if (whoPlays == 'o') {
             ImageArea1->Picture->LoadFromFile("images/o.bmp");
             ImageTurn->Picture->LoadFromFile("images/xsmall.bmp");
             a1 = 'o';
-            who = 'x';
+            whoPlays = 'x';
         } else {
             ImageArea1->Picture->LoadFromFile("images/x.bmp");
             ImageTurn->Picture->LoadFromFile("images/osmall.bmp");
             a1 = 'x';
-            who = 'o';
+            whoPlays = 'o';
         }
         ImageArea1->Enabled=false;
-        checkIfGameIsFinished();
+        findWinner();
     }
 }
 //---------------------------------------------------------------------------
 void __fastcall TForm1::ImageArea2Click(TObject *Sender)
 {
-    if (a2 == 'n') {
-        if (who == 'o') {
+    if (a2 == 'n' & winner == 'n') {
+        if (whoPlays == 'o') {
             ImageArea2->Picture->LoadFromFile("images/o.bmp");
             ImageTurn->Picture->LoadFromFile("images/xsmall.bmp");
             a2 = 'o';
-            who = 'x';
+            whoPlays = 'x';
         } else {
             ImageArea2->Picture->LoadFromFile("images/x.bmp");
             ImageTurn->Picture->LoadFromFile("images/osmall.bmp");
             a2 = 'x';
-            who = 'o';
+            whoPlays = 'o';
         }
         ImageArea2->Enabled=false;
-        checkIfGameIsFinished();
+        findWinner();
     }
 }
 //---------------------------------------------------------------------------
 void __fastcall TForm1::ImageArea3Click(TObject *Sender)
 {
-    if (a3 == 'n') {
-        if (who == 'o') {
+    if (a3 == 'n' & winner == 'n') {
+        if (whoPlays == 'o') {
             ImageArea3->Picture->LoadFromFile("images/o.bmp");
             ImageTurn->Picture->LoadFromFile("images/xsmall.bmp");
             a3 = 'o';
-            who = 'x';
+            whoPlays = 'x';
         } else {
             ImageArea3->Picture->LoadFromFile("images/x.bmp");
             ImageTurn->Picture->LoadFromFile("images/osmall.bmp");
             a3 = 'x';
-            who = 'o';
+            whoPlays = 'o';
         }
         ImageArea3->Enabled=false;
-        checkIfGameIsFinished();
+        findWinner();
     }
 }
 //---------------------------------------------------------------------------
 void __fastcall TForm1::ImageArea4Click(TObject *Sender)
 {
-    if (a4 == 'n') {
-        if (who == 'o') {
+    if (a4 == 'n' & winner == 'n') {
+        if (whoPlays == 'o') {
             ImageArea4->Picture->LoadFromFile("images/o.bmp");
             ImageTurn->Picture->LoadFromFile("images/xsmall.bmp");
             a4 = 'o';
-            who = 'x';
+            whoPlays = 'x';
         } else {
             ImageArea4->Picture->LoadFromFile("images/x.bmp");
             ImageTurn->Picture->LoadFromFile("images/osmall.bmp");
             a4 = 'x';
-            who = 'o';
+            whoPlays = 'o';
         }
         ImageArea4->Enabled=false;
-        checkIfGameIsFinished();
+        findWinner();
     }
 }
 //---------------------------------------------------------------------------
 void __fastcall TForm1::ImageArea5Click(TObject *Sender)
 {
-    if (a5 == 'n') {
-        if (who == 'o') {
+    if (a5 == 'n' & winner == 'n') {
+        if (whoPlays == 'o') {
             ImageArea5->Picture->LoadFromFile("images/o.bmp");
             ImageTurn->Picture->LoadFromFile("images/xsmall.bmp");
             a5 = 'o';
-            who = 'x';
+            whoPlays = 'x';
         } else {
             ImageArea5->Picture->LoadFromFile("images/x.bmp");
             ImageTurn->Picture->LoadFromFile("images/osmall.bmp");
             a5 = 'x';
-            who = 'o';
+            whoPlays = 'o';
         }
         ImageArea5->Enabled=false;
-        checkIfGameIsFinished();
+        findWinner();
     }
 }
 //---------------------------------------------------------------------------
 void __fastcall TForm1::ImageArea6Click(TObject *Sender)
 {
-    if (a6 == 'n') {
-        if (who == 'o') {
+    if (a6 == 'n' & winner == 'n') {
+        if (whoPlays == 'o') {
             ImageArea6->Picture->LoadFromFile("images/o.bmp");
             ImageTurn->Picture->LoadFromFile("images/xsmall.bmp");
             a6 = 'o';
-            who = 'x';
+            whoPlays = 'x';
         } else {
             ImageArea6->Picture->LoadFromFile("images/x.bmp");
             ImageTurn->Picture->LoadFromFile("images/osmall.bmp");
             a6 = 'x';
-            who = 'o';
+            whoPlays = 'o';
         }
         ImageArea6->Enabled=false;
-        checkIfGameIsFinished();
+        findWinner();
     }
 }
 //---------------------------------------------------------------------------
 void __fastcall TForm1::ImageArea7Click(TObject *Sender)
 {
-    if (a7 == 'n') {
-        if (who == 'o') {
+    if (a7 == 'n' & winner == 'n') {
+        if (whoPlays == 'o') {
             ImageArea7->Picture->LoadFromFile("images/o.bmp");
             ImageTurn->Picture->LoadFromFile("images/xsmall.bmp");
             a7 = 'o';
-            who = 'x';
+            whoPlays = 'x';
         } else {
             ImageArea7->Picture->LoadFromFile("images/x.bmp");
             ImageTurn->Picture->LoadFromFile("images/osmall.bmp");
             a7 = 'x';
-            who = 'o';
+            whoPlays = 'o';
         }
         ImageArea7->Enabled=false;
-        checkIfGameIsFinished();
+        findWinner();
     }
 }
 //---------------------------------------------------------------------------
 void __fastcall TForm1::ImageArea8Click(TObject *Sender)
 {
-    if (a8 == 'n') {
-        if (who == 'o') {
+    if (a8 == 'n' & winner == 'n') {
+        if (whoPlays == 'o') {
             ImageArea8->Picture->LoadFromFile("images/o.bmp");
             ImageTurn->Picture->LoadFromFile("images/xsmall.bmp");
             a8 = 'o';
-            who = 'x';
+            whoPlays = 'x';
         } else {
             ImageArea8->Picture->LoadFromFile("images/x.bmp");
             ImageTurn->Picture->LoadFromFile("images/osmall.bmp");
             a8 = 'x';
-            who = 'o';
+            whoPlays = 'o';
         }
         ImageArea8->Enabled=false;
-        checkIfGameIsFinished();
+        findWinner();
     }
 }
 //---------------------------------------------------------------------------
 void __fastcall TForm1::ImageArea9Click(TObject *Sender)
 {
-    if (a9 == 'n') {
-        if (who == 'o') {
+    if (a9 == 'n'& winner == 'n') {
+        if (whoPlays == 'o') {
             ImageArea9->Picture->LoadFromFile("images/o.bmp");
             ImageTurn->Picture->LoadFromFile("images/xsmall.bmp");
             a9 = 'o';
-            who = 'x';
+            whoPlays = 'x';
         } else {
             ImageArea9->Picture->LoadFromFile("images/x.bmp");
             ImageTurn->Picture->LoadFromFile("images/osmall.bmp");
             a9 = 'x';
-            who = 'o';
+            whoPlays = 'o';
         }
         ImageArea9->Enabled=false;
-        checkIfGameIsFinished();
+        findWinner();
     }
 }
 //---------------------------------------------------------------------------
